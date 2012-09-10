@@ -8,6 +8,9 @@
 # Ignore .htaccess file
 application/.htaccess
 
+# Ignore koadrreplace.php file
+application/koadrreplace.php
+
 # Can also ignore all directories and files in a directory.
 tmp/**/*
 
