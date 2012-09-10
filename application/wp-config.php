@@ -16,22 +16,30 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wpb_seventh_day_baptist_church_dev');
+if ( file_exists( dirname( __FILE__ ) . '/wp-config-local.php' ) ) {
 
-/** MySQL database username */
-define('DB_USER', 'root');
+    // Local Environment
+    define('WP_ENV', 'local');
+    define('WP_DEBUG', true);
 
-/** MySQL database password */
-define('DB_PASSWORD', 'root');
+    require( 'wp-config-local.php' );
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config-cruise.php' ) ) {
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+    // Playground Environment
+    define('WP_ENV', 'cruise');
+    define('WP_DEBUG', true);
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+    require( 'wp-config-cruise.php' );
+
+} elseif ( file_exists( dirname( __FILE__ ) . '/wp-config-prod.php' ) ) {
+
+    // Production Environment
+    define('WP_ENV', 'prod');
+    define('WP_DEBUG', false);
+
+    require( 'wp-config-prod.php' );
+}
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -42,14 +50,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'DH;[0O;KI#4/[]O/TuFoT|2Nw+#&.u+33,+~xvNiY(03bI|[N~f2@OTC2[RZj0Jd');
-define('SECURE_AUTH_KEY',  'VhG:+ SEPz).(J-+o[/vg%z0Wzk,quE9@kThq0xdTpQF)TZy(7gup[c4{(fg{D3-');
-define('LOGGED_IN_KEY',    '3+|YH[@GiVDz4sKREiVAw(v2*NRl~D#Jt<.,q_Hvy#g`Z(>ss9wF0 JM&;217atB');
-define('NONCE_KEY',        'ht5NF}}L+!zxM=D+`jI )cl^l+9F_A^0k)@ne%O<LE/#WcRY*^gFE;e?LY !H1pL');
-define('AUTH_SALT',        '-H;>cygi>aiaeLlC|W3ZSJAu!Z7#?&&Oth}F-fk9_39(]fDz)X=&|+dR</[<(|P$');
-define('SECURE_AUTH_SALT', 'Wwz|]5ASAxX;<Pg(R{~8s/{a|B)vY=p!35`(V^u,Uh,B*eUIS~0i=D/jNRt80%2+');
-define('LOGGED_IN_SALT',   'M-slD^Z6fzl*S)*.)@uUW]$ZRy|CNtblwzh#1ENc~B,wTtHBPXSQ=6:&C?{? Nm ');
-define('NONCE_SALT',       'S-i_Mq%{CgXu?-JVO+h-s~tCKEibxz6K=-bqiQi/-lk .M5uwj4@9L/r`/#W4PN&');
+define('AUTH_KEY',         'bw>lv1BvC&z=d@b|e &h5oc.k$]8Z|{uaYPi 3j-{@Ok9!-|EifgoRQnUD7s|-+.');
+define('SECURE_AUTH_KEY',  '{2d;zwR7$uz iKNZ{A1F/A:iu!Eb28}ZjizSsXD6+nIln7|2P0XSW;}x}ohzI_ i');
+define('LOGGED_IN_KEY',    '5vPMW?ux)+~f1_,pV!3&{5.-oWqEibAsu|@0(:Wo|`C5&?9-8C}DlDAqiMB]y*<T');
+define('NONCE_KEY',        'e|b2N(E8.+|W8;m/uS24?hT!L,c;AoT#vq.t0Hr;@F?4&Cc6/n8(2,Wt)wyyHHs;');
+define('AUTH_SALT',        'Y|]|u^d@L]E!(*-Kp]ONg:(B-3CyVT_.>qsh,%|+|D+gbuSF?O.9v!RR062#X~VJ');
+define('SECURE_AUTH_SALT', 'gtP} <?c(i,Z.I|yWABBRv-4w$+R>+)5A,:oq>zX;R#}sZ|(3CPX^?r %!U59yrW');
+define('LOGGED_IN_SALT',   '1FGn:[DBXTQ-O7+MbS@+3aV`qEi+2,/@7(L5(Y {]W)OR3_F+Of& L_@Y4_q0w;!');
+define('NONCE_SALT',       'd?< /QeY?0cy+M.V=+vhCZ<#}Ou^#+$R9#,*-E<Z#s_ZSk]kEbQ%m]KA{B4aPh:|');
 
 /**#@-*/
 
@@ -70,15 +78,6 @@ $table_prefix  = 'wp_';
  * language support.
  */
 define('WPLANG', '');
-
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
-define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
